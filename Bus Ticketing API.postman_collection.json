@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "4befbe46-7767-4c09-90c2-d4ae03a30d87",
+		"name": "Bus Ticketing API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33060841"
+	},
+	"item": [
+		{
+			"name": "Create a Ticket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"seatNumber\": 1,\r\n    \"status\": \"open\",\r\n    \"userDetails\": {}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/tickets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Ticket Status (Open/Close) and Add User Details",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"status\": \"closed\",\r\n  \"userDetails\": {\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/tickets/20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"tickets",
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Ticket Status by Seat Number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/tickets/{20}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"tickets",
+						"{20}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View All Closed Tickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/tickets/status/closed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"tickets",
+						"status",
+						"closed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View All Open Tickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/tickets/status/open",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"tickets",
+						"status",
+						"open"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View User Details by Ticket's Seat Number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/tickets/user-details/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"tickets",
+						"user-details",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset All Tickets (Admin Only)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/tickets/reset",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"tickets",
+						"reset"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

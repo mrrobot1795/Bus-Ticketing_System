@@ -3,6 +3,33 @@ const express = require('express');
 const router = express.Router();
 const Ticket = require('../models/Ticket');
 
+//Create a ticket
+router.post('/', async (req, res) => {
+  try {
+      const { seatNumber, status, userDetails } = req.body;
+      
+      // Check if the ticket already exists to avoid duplicates
+      const existingTicket = await Ticket.findOne({ seatNumber });
+      if (existingTicket) {
+          return res.status(400).send({ message: 'Ticket for this seat number already exists' });
+      }
+
+      // Create a new ticket if it does not exist
+      const newTicket = new Ticket({
+          seatNumber,
+          status,
+          userDetails: status === 'closed' ? userDetails : {}
+      });
+      
+      await newTicket.save(); // Save the new ticket to the database
+      res.status(201).send(newTicket); // Respond with the created ticket
+  } catch (error) {
+      res.status(500).send({ message: error.message });
+  }
+});
+
+
+
 // Update ticket status (open/close) and add user details for closed tickets
 router.patch('/:seatNumber', async (req, res) => {
   try {
