@@ -117,5 +117,9 @@ router.post('/reset', async (req, res) => {
   }
 });
 
+// Define the route
+router.get('/', (req, res) => {
+    res.json({ message: 'Endpoint is working' });
+  });
 
 module.exports = router;
