@@ -8,11 +8,13 @@
     <h1>Welcome to the Ticketing API</h1>
     <p>Use the following endpoints to interact with the API:</p>
     <ul>
-        <li><b>GET /api/tickets</b> - View all tickets</li>
+        <li><b>POST /api/tickets/reset</b> - Reset All Tickets</li>
         <li><b>POST /api/tickets</b> - Create a new ticket</li>
         <li><b>PATCH /api/tickets/:seatNumber</b> - Update a ticket status</li>
         <li><b>GET /api/tickets/status/open</b> - View all open tickets</li>
         <li><b>GET /api/tickets/status/closed</b> - View all closed tickets</li>
+        <li><b>GET /api/tickets/:seatNumber</b> - View Ticket Status by Seat Number</li>
+        <li><b>GET /api/tickets/user-details/:seatNumber</b> - View User Details by Seat Number</li>
     </ul>
 </body>
 </html>
